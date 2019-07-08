@@ -1,0 +1,33 @@
+nochars= 256
+def maxchar(str, n): 
+	count = [0] * nochars
+	for i in range(n): 
+		count[ord(str[i])]=count[ord(str[i])]+1
+	maxi = 0
+	for i in range(nochars): 
+		if (count[i] != 0): 
+			maxi=maxi+1	
+	return maxi 
+
+def smallesteSubstr_maxDistictChar(str): 
+
+	n = len(str)
+	maxdis = maxchar(str, n) 
+	minl = n
+	for i in range(n): 
+		for j in range(n): 
+			subs = str[i:j] 
+			subs_lenght = len(subs) 
+			subchar = maxchar(subs,subs_lenght) 
+			if (subs_lenght < minl and
+				maxdis == subchar): 
+				minl = subs_lenght 
+
+	return minl 
+ 
+str=input()
+l = smallesteSubstr_maxDistictChar(str); 
+print(l) 
+
+
+  
